@@ -28,6 +28,7 @@ async fn fallback(uri: axum::http::Uri) -> impl IntoResponse {
 #[derive(FromRef, Clone)]
 pub struct AppState {
     pub app_name: Arc<String>,
+    pub listen_addr: std::net::SocketAddr,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -43,8 +44,10 @@ fn main() -> anyhow::Result<()> {
         .enable_all()
         .build()?
         .block_on(async {
+            let listen_addr = config.socket_addr();
             let state = AppState {
                 app_name: std::sync::Arc::new("hello-askama".to_string()),
+                listen_addr,
             };
 
             let app = axum::Router::new()
@@ -64,7 +67,7 @@ fn main() -> anyhow::Result<()> {
                 ));
             // .layer(tower_http::compression::CompressionLayer::new());
 
-            let listener = tokio::net::TcpListener::bind(config.socket_addr())
+            let listener = tokio::net::TcpListener::bind(listen_addr)
                 .await
                 .and_then(|listener| {
                     tracing::info!("listening on http://{}", listener.local_addr()?);
