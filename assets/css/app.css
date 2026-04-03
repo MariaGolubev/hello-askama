@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Scan Askama templates for class names */
+@source "../templates/**/*.html";
+
+@layer components {
+
+	.content {
+		@apply mx-auto max-w-3xl px-4 py-8;
+	}
+
+	/* Layout */
+	.page-title {
+		@apply text-2xl font-semibold mb-3;
+	}
+
+	.page-title-lg {
+		@apply text-2xl font-semibold mb-8;
+	}
+
+	.muted {
+		@apply text-gray-600 dark:text-gray-400;
+	}
+
+	.muted-sm {
+		@apply text-sm text-gray-400;
+	}
+
+	/* Navigation */
+	.nav {
+		@apply mb-10 border-b border-gray-200 pb-4 dark:border-gray-800;
+	}
+
+	.nav-list {
+		@apply flex gap-6 text-sm font-medium;
+	}
+
+	.nav-link {
+		@apply text-gray-400 hover:text-black transition-colors dark:hover:text-white;
+	}
+
+	.nav-link-active {
+		@apply text-black dark:text-white;
+	}
+
+	/* Lists */
+	.card-list {
+		@apply flex flex-col gap-6;
+	}
+
+	/* Links */
+	.link {
+		@apply underline hover:text-gray-600 dark:hover:text-gray-300;
+	}
+
+	.center {
+		@apply grid place-items-center min-h-dvh
+	}
+}

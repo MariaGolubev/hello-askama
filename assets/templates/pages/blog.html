@@ -1,0 +1,14 @@
+<main class="content">
+	<h1 class="page-title-lg">Blog</h1>
+	<ul class="card-list">
+		{% for post in posts %}
+		<li>
+			<div class="flex items-baseline gap-3 mb-1">
+				<span class="font-medium">{{ post.title }}</span>
+				<span class="muted-sm">{{ post.date }}</span>
+			</div>
+			<p class="muted text-sm">{{ post.summary }}</p>
+		</li>
+		{% endfor %}
+	</ul>
+</main>

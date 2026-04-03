@@ -1,0 +1,13 @@
+<nav class="content nav" hx-boost:inherited="true">
+	<ul class="nav-list">
+		{% for item in Page::iter() %}
+		<li>
+			{% if item == current_path %}
+			<a href="{{ item.url() }}" class="nav-link-active">{{ item }}</a>
+			{% else %}
+			<a href="{{ item.url() }}" class="nav-link">{{ item }}</a>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+</nav>

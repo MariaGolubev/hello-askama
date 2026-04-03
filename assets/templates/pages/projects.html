@@ -1,0 +1,11 @@
+<main class="content">
+	<h1 class="page-title-lg">Projects</h1>
+	<ul class="card-list">
+		{% for project in projects %}
+		<li>
+			<span class="font-medium">{{ project.name }}</span>
+			<p class="muted text-sm mt-1">{{ project.description }}</p>
+		</li>
+		{% endfor %}
+	</ul>
+</main>

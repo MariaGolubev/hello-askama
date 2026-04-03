@@ -3,7 +3,7 @@ use clap::Parser;
 #[derive(Parser, Debug, Clone)]
 #[clap(author, version, about, long_about = None)]
 pub struct Config {
-    #[clap(long, env = "HOST", default_value = "127.0.0.1")]
+    #[clap(long, env = "HOST", default_value = "0.0.0.0")]
     pub host: std::net::IpAddr,
     #[clap(long, env = "PORT", default_value = "3000")]
     pub port: u16,

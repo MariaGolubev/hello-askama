@@ -1,0 +1,14 @@
+{
+	"name": "hello-askama",
+	"scripts": {
+		"build": "mkdir -p static/css static/js static/img && tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --minify && cp node_modules/htmx.org/dist/htmx.min.js static/js/htmx.min.js && cp -R assets/img/* static/img/",
+		"dev": "mkdir -p static/css static/js static/img && tailwindcss -i ./assets/css/app.css -o ./static/css/app.css --watch"
+	},
+	"devDependencies": {
+		"@tailwindcss/cli": "^4.0.0",
+		"tailwindcss": "^4.0.0"
+	},
+	"dependencies": {
+		"htmx.org": "^4.0.0-alpha7"
+	}
+}

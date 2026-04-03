@@ -1,19 +1,28 @@
 use std::sync::Arc;
 
-use axum::{
-    extract::{FromRef, State},
-    response::IntoResponse,
-};
-use axum_typed_routing::{TypedRouter, route};
+use axum::{extract::FromRef, response::IntoResponse};
+use axum_embed::ServeEmbed;
+use axum_typed_routing::TypedRouter;
 use clap::Parser;
+use rust_embed::RustEmbed;
 use tracing_subscriber::{EnvFilter, fmt, prelude::*};
 
 mod config;
+mod error;
+mod routes;
 mod shutdown;
+mod ui;
 
-#[route(GET "/" with AppState)]
-async fn index(State(app_name): State<Arc<String>>) -> impl IntoResponse {
-    format!("Hello from {app_name}!")
+use error::AppError;
+
+#[derive(RustEmbed, Clone)]
+#[folder = "static/"]
+struct StaticAssets;
+
+async fn fallback(uri: axum::http::Uri) -> impl IntoResponse {
+    AppError::NotFound {
+        path: uri.path().to_string(),
+    }
 }
 
 #[derive(FromRef, Clone)]
@@ -39,13 +48,21 @@ fn main() -> anyhow::Result<()> {
             };
 
             let app = axum::Router::new()
-                .typed_route(index)
+                .typed_route(routes::pages::index)
+                .typed_route(routes::pages::blog)
+                .typed_route(routes::pages::projects)
+                .typed_route(routes::pages::contact)
+                .typed_route(routes::pages::about)
+                .typed_route(routes::pages::qrcode)
+                .nest_service("/static", ServeEmbed::<StaticAssets>::new())
                 .with_state(state)
+                .fallback(fallback)
                 .layer(tower_http::trace::TraceLayer::new_for_http())
                 .layer(tower_http::timeout::TimeoutLayer::with_status_code(
                     axum::http::StatusCode::REQUEST_TIMEOUT,
                     config.request_timeout,
                 ));
+            // .layer(tower_http::compression::CompressionLayer::new());
 
             let listener = tokio::net::TcpListener::bind(config.socket_addr())
                 .await
