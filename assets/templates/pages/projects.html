@@ -3,7 +3,7 @@
 	<ul class="card-list">
 		{% for project in projects %}
 		<li>
-			<span class="font-medium">{{ project.name }}</span>
+			<a href="{{ project.url }}" class="link font-medium">{{ project.name }}</a>
 			<p class="muted text-sm mt-1">{{ project.description }}</p>
 		</li>
 		{% endfor %}

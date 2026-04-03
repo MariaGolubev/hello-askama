@@ -7,9 +7,7 @@ use axum::{
 use axum_typed_routing::route;
 use std::sync::Arc;
 
-use crate::{
-    AppState, error::AppError, ui::components::Page, ui::layout::render::render_page,
-};
+use crate::{AppState, error::AppError, ui::components::Page, ui::layout::render::render_page};
 
 pub struct BlogPost {
     pub title: &'static str,
@@ -40,14 +38,19 @@ pub async fn blog(
         Page::Blog,
         BlogTemplate::new(vec![
             BlogPost {
-                title: "Getting started with Askama",
-                date: "2026-03-01",
-                summary: "A quick introduction to type-safe HTML templates in Rust.",
+                title: "Integrating Svelte into an Axum service",
+                date: "2026-03-18",
+                summary: "How I approached wiring a Svelte frontend to a Rust Axum backend in my svelte-inc-dec project.",
             },
             BlogPost {
-                title: "Boosting navigation with htmx",
-                date: "2026-03-10",
-                summary: "How hx-boost turns a multi-page app into a SPA-like experience.",
+                title: "GLSL Mandelbrot experiments in a libadwaita app",
+                date: "2026-02-26",
+                summary: "Notes from building fractal: rendering Mandelbrot sets in a desktop application with C and shaders.",
+            },
+            BlogPost {
+                title: "Building a minimal shell with finite state machines",
+                date: "2026-01-30",
+                summary: "Lessons learned while implementing minishell in C and organizing command parsing with an FSM.",
             },
         ]),
     )?;

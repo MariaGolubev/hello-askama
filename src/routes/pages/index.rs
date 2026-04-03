@@ -7,9 +7,7 @@ use axum::{
 use axum_typed_routing::route;
 use std::sync::Arc;
 
-use crate::{
-    AppState, error::AppError, ui::components::Page, ui::layout::render::render_page,
-};
+use crate::{AppState, error::AppError, ui::components::Page, ui::layout::render::render_page};
 
 #[derive(Template)]
 #[template(path = "pages/index.html")]
@@ -32,7 +30,9 @@ pub async fn index(
         &headers,
         app_name.to_string(),
         Page::Home,
-        IndexTemplate::new("Hello, Askama!"),
+        IndexTemplate::new(
+            "Rust developer focused on systems programming, desktop apps, and modern web backends.",
+        ),
     )?;
 
     Ok(Html(html))

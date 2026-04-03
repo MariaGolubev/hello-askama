@@ -7,13 +7,12 @@ use axum::{
 use axum_typed_routing::route;
 use std::sync::Arc;
 
-use crate::{
-    AppState, error::AppError, ui::components::Page, ui::layout::render::render_page,
-};
+use crate::{AppState, error::AppError, ui::components::Page, ui::layout::render::render_page};
 
 pub struct Project {
     pub name: &'static str,
     pub description: &'static str,
+    pub url: &'static str,
 }
 
 #[derive(Template)]
@@ -41,12 +40,34 @@ pub async fn projects(
         Page::Projects,
         ProjectsTemplate::new(vec![
             Project {
-                name: "hello-askama",
-                description: "A demo web app built with Rust, Axum, Askama and htmx.",
+                name: "webserv",
+                description: "HTTP server project focused on networking fundamentals and protocol handling.",
+                url: "https://github.com/MariaGolubev/webserv",
             },
             Project {
-                name: "axum-typed-routing",
-                description: "Type-safe routing for Axum with compile-time path checking.",
+                name: "svelte-inc-dec",
+                description: "Integration of a Svelte interface into a Rust Axum web service.",
+                url: "https://github.com/MariaGolubev/svelte-inc-dec",
+            },
+            Project {
+                name: "fractal",
+                description: "A libadwaita desktop application that draws Mandelbrot sets in a GLSL shader.",
+                url: "https://github.com/MariaGolubev/fractal",
+            },
+            Project {
+                name: "minishell",
+                description: "A minimal Unix-like shell in C, focused on core shell behavior and parser design.",
+                url: "https://github.com/MariaGolubev/minishell",
+            },
+            Project {
+                name: "hello_codam",
+                description: "A GTK4/libadwaita application project in C.",
+                url: "https://github.com/MariaGolubev/hello_codam",
+            },
+            Project {
+                name: "Cube3d",
+                description: "Implementation of DDA ray tracing algorithm in C.",
+                url: "https://github.com/MariaGolubev/Cube3d",
             },
         ]),
     )?;
