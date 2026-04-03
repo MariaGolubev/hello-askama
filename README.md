@@ -1,8 +1,8 @@
 # hello-askama
 
-Небольшой веб-проект на Rust с использованием Axum и Askama.
+A small Rust web project built with Axum and Askama.
 
-## Стек
+## Stack
 
 - Rust (edition 2024)
 - Axum
@@ -10,35 +10,35 @@
 - Tailwind CSS
 - htmx
 
-## Запуск в разработке
+## Development Run
 
-1. Установить зависимости фронтенда:
+1. Install frontend dependencies:
 
 ```bash
 npm install
 ```
 
-2. Запустить сборку статики в watch-режиме:
+2. Start static asset build in watch mode:
 
 ```bash
 npm run dev
 ```
 
-3. В отдельном терминале запустить приложение:
+3. In a separate terminal, run the app:
 
 ```bash
 cargo run
 ```
 
-## Продакшен-сборка статики
+## Production Static Build
 
 ```bash
 npm run build
 ```
 
-## Структура
+## Structure
 
-- `src/` — backend (маршруты, конфиг, UI-компоненты)
-- `templates/` — шаблоны Askama
-- `assets/` — исходники стилей/изображений
-- `static/` — собранная статика
+- `src/` - backend (routes, config, UI components)
+- `templates/` - Askama templates
+- `assets/` - source styles/images
+- `static/` - compiled static assets
