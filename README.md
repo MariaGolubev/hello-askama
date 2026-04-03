@@ -2,6 +2,10 @@
 
 A small Rust web project built with Axum and Askama.
 
+<p align="center">
+	<img src="./Screenshot_1.png" alt="Screenshot 1"/>
+</p>
+
 ## Stack
 
 - Rust (edition 2024)
