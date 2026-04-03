@@ -5,31 +5,26 @@ edition = "2024"
 build = "build.rs"
 
 [dependencies]
-anyhow = { version = "1.0.102", features = ["backtrace"] }
-askama = "0.15.4"
-axum = { version = "0.8.8", features = ["macros"] }
-axum-embed = "0.1.0"
-axum-typed-routing = "0.4.0"
+anyhow = { version = "1", features = ["backtrace"] }
+askama = "0.15"
+axum = { version = "0.8", features = ["macros"] }
+axum-embed = "0.1"
+axum-typed-routing = "0.4"
 clap = { version = "4.6", features = ["derive", "env"] }
-local-ip-address = "0.6.10"
-num_cpus = "1.17.0"
-qrcode = "0.14.1"
-rust-embed = { version = "8.11.0", features = ["compression", "include-flate"] }
-strum = { version = "0.28.0", features = ["derive"] }
-thiserror = "2.0.18"
-tokio = { version = "1.50.0", features = [
+local-ip-address = "0.6"
+num_cpus = "1"
+qrcode = "0.14"
+rust-embed = { version = "8.11", features = ["compression", "include-flate"] }
+strum = { version = "0.28", features = ["derive"] }
+thiserror = "2"
+tokio = { version = "1.51", features = [
 	"rt-multi-thread",
 	"signal",
 	"tracing",
 ] }
-tower-http = { version = "0.6", features = [
-	"trace",
-	"timeout",
-	"fs",
-	"compression-full",
-] }
-tracing = "0.1.44"
-tracing-subscriber = { version = "0.3.23", features = [
+tower-http = { version = "0.6", features = ["trace", "timeout"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = [
 	"env-filter",
 	"fmt",
 	"registry",
@@ -40,4 +35,3 @@ opt-level = 3
 
 [build-dependencies]
 minify-html = "0.18"
-zstd = "0.13"
