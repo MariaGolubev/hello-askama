@@ -35,6 +35,26 @@
 		@apply flex gap-6 text-sm font-medium;
 	}
 
+	.mobile-menu {
+		@apply text-sm font-medium;
+	}
+
+	.mobile-menu-summary {
+		@apply flex items-center justify-between list-none cursor-pointer;
+	}
+
+	.mobile-menu-summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.mobile-menu-icon {
+		@apply text-xl leading-none text-gray-500;
+	}
+
+	.mobile-nav-list {
+		@apply mt-4 flex flex-col gap-3;
+	}
+
 	.nav-link {
 		@apply text-gray-400 hover:text-black transition-colors dark:hover:text-white;
 	}

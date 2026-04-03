@@ -1,5 +1,21 @@
 <nav class="content nav" hx-boost:inherited="true">
-	<ul class="nav-list">
+	<details class="mobile-menu md:hidden">
+		<summary class="mobile-menu-summary">
+			<span>{{ current_path }}</span>
+			<span class="mobile-menu-icon" aria-hidden="true">☰</span>
+		</summary>
+		<ul class="mobile-nav-list">
+			{% for item in Page::iter() %}
+			{% if item != current_path %}
+			<li>
+				<a href="{{ item.url() }}" class="nav-link">{{ item }}</a>
+			</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</details>
+
+	<ul class="nav-list hidden md:flex">
 		{% for item in Page::iter() %}
 		<li>
 			{% if item == current_path %}
